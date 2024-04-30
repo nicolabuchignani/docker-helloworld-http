@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: helloworld-http-deployment
-  namespace: default
 spec:
   replicas: 1
   selector:
@@ -18,8 +17,4 @@ spec:
         image: helloworld-http-image
         imagePullPolicy: Never
         ports:
-        - protocol: TCP
-          port: 80
-          targetPort: 80
-          nodePort: 30080    # Specify a static port for NodePort
-          type: NodePort        # Change the service type to NodePort
+        - containerPort: 80
